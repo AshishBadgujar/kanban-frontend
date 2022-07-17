@@ -152,7 +152,7 @@ export function deleteColumn(columnId) {
   return async () => {
     dispatch(slice.actions.startLoading());
     try {
-      await axios.post('/api/kanban/columns/delete', { columnId });
+      await axios.delete('/api/kanban/columns/delete', { columnId });
       dispatch(slice.actions.deleteColumnSuccess({ columnId }));
     } catch (error) {
       dispatch(slice.actions.hasError(error));

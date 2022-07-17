@@ -8,7 +8,6 @@ import useCollapseDrawer from '../hooks/useCollapseDrawer';
 import { HEADER, NAVBAR } from '../config';
 //
 import DashboardHeader from './header';
-import NavbarVertical from './navbar/NavbarVertical';
 
 // ----------------------------------------------------------------------
 
@@ -47,8 +46,6 @@ export default function DashboardLayout(props) {
       }}
     >
       <DashboardHeader isCollapse={isCollapse} onOpenSidebar={() => setOpen(true)} />
-
-      {/* <NavbarVertical isOpenSidebar={open} onCloseSidebar={() => setOpen(false)} /> */}
 
       <MainStyle collapseClick={collapseClick}>
         {props.children}

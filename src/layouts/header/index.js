@@ -8,13 +8,9 @@ import useResponsive from '../../hooks/useResponsive';
 // utils
 import cssStyles from '../../utils/cssStyles';
 // config
-import { HEADER, NAVBAR } from '../../config';
+import { HEADER } from '../../config';
 // components
-import Logo from '../../components/Logo';
-import Iconify from '../../components/Iconify';
-import { IconButtonAnimate } from '../../components/animate';
 //
-import Searchbar from './Searchbar';
 import AccountPopover from './AccountPopover';
 
 const RootStyle = styled(AppBar, {
@@ -63,18 +59,6 @@ export default function DashboardHeader({ onOpenSidebar, isCollapse = false, ver
           px: { lg: 5 },
         }}
       >
-        {/* {isDesktop && verticalLayout && <Logo sx={{ mr: 2.5 }} />} */}
-
-        {/* {!isDesktop && (
-          <IconButtonAnimate onClick={onOpenSidebar} sx={{ mr: 1, color: 'text.primary' }}>
-            <Iconify icon="eva:menu-2-fill" />
-            </IconButtonAnimate>
-          )} */}
-        <IconButtonAnimate sx={{ mr: 1, color: 'text.primary' }}>
-          <Iconify icon="eva:menu-2-fill" />
-        </IconButtonAnimate>
-
-        {/* <Searchbar /> */}
         <Typography color={"text.primary"}>Kanban | Task Manager</Typography>
         <Box sx={{ flexGrow: 1 }} />
         <Stack direction="row" alignItems="center" spacing={{ xs: 0.5, sm: 1.5 }}>

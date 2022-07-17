@@ -91,7 +91,6 @@ export default function Kanban() {
                 direction="row"
                 alignItems="flex-start"
                 spacing={3}
-              // sx={{ height: 'calc(100% - 32px)', overflowY: 'hidden' }}
               >
                 {!board.columnOrder.length ? (
                   <SkeletonKanbanColumn />

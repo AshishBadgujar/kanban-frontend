@@ -1,16 +1,11 @@
 import PropTypes from 'prop-types';
-import { format, isSameDay, isSameMonth } from 'date-fns';
 import { useState } from 'react';
 // @mui
-import { Box, Paper, Stack, Tooltip, Checkbox, IconButton, OutlinedInput, ClickAwayListener } from '@mui/material';
-import { MobileDateRangePicker } from '@mui/lab';
-import Iconify from '../components/Iconify';
+import { Paper, OutlinedInput, ClickAwayListener } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
-const defaultTask = {
-  description: '',
-};
+const defaultTask = {};
 
 KanbanTaskAdd.propTypes = {
   onAddTask: PropTypes.func,
@@ -19,31 +14,26 @@ KanbanTaskAdd.propTypes = {
 
 export default function KanbanTaskAdd({ onAddTask, onCloseAddTask }) {
   const [name, setName] = useState('');
-  const [completed, setCompleted] = useState(false);
 
   const handleKeyUpAddTask = (event) => {
     if (event.key === 'Enter') {
       if (name.trim() !== '') {
-        onAddTask({ ...defaultTask, name, completed });
+        onAddTask({ ...defaultTask, name });
       }
     }
   };
 
   const handleClickAddTask = () => {
     if (name) {
-      onAddTask({ ...defaultTask, name, completed });
+      onAddTask({ ...defaultTask, name });
     }
     onCloseAddTask();
-  };
-
-  const handleChangeCompleted = (event) => {
-    setCompleted(event.target.checked);
   };
 
   return (
     <>
       <ClickAwayListener onClickAway={handleClickAddTask}>
-        <Paper variant="outlined" sx={{ p: 2 }}>
+        <Paper variant="outlined" sx={{ p: 1 }}>
           <OutlinedInput
             multiline
             size="small"

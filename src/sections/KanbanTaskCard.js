@@ -1,13 +1,8 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 // @mui
-import { Paper, Typography, Box, Checkbox } from '@mui/material';
+import { Paper, Typography, Box } from '@mui/material';
 // components
-import Iconify from '../components/Iconify';
-//
-import KanbanTaskDetails from './KanbanTaskDetails';
-
 // ----------------------------------------------------------------------
 
 KanbanTaskCard.propTypes = {
@@ -16,24 +11,8 @@ KanbanTaskCard.propTypes = {
   onDeleteTask: PropTypes.func,
 };
 
-export default function KanbanTaskCard({ card, onDeleteTask, index }) {
-  const { name, attachments } = card;
-
-  const [openDetails, setOpenDetails] = useState(false);
-
-  const [completed, setCompleted] = useState(card.completed);
-
-  const handleOpenDetails = () => {
-    setOpenDetails(true);
-  };
-
-  const handleCloseDetails = () => {
-    setOpenDetails(false);
-  };
-
-  const handleChangeComplete = (event) => {
-    setCompleted(event.target.checked);
-  };
+export default function KanbanTaskCard({ card, index }) {
+  const { name } = card;
 
   return (
     <Draggable draggableId={card.id} index={index}>
@@ -50,40 +29,22 @@ export default function KanbanTaskCard({ card, onDeleteTask, index }) {
               },
             }}
           >
-            <Box onClick={handleOpenDetails} sx={{ cursor: 'pointer' }}>
+            <Box sx={{ cursor: 'pointer' }}>
               <Typography
                 noWrap
                 variant="subtitle2"
                 sx={{
-                  py: 3,
-                  pl: 5,
+                  py: 2,
                   transition: (theme) =>
                     theme.transitions.create('opacity', {
                       duration: theme.transitions.duration.shortest,
-                    }),
-                  ...(completed && { opacity: 0.48, textDecoration: "line-through" }),
+                    })
                 }}
               >
                 {name}
               </Typography>
             </Box>
-
-            <Checkbox
-              disableRipple
-              checked={completed}
-              icon={<Iconify icon={'eva:radio-button-off-outline'} />}
-              checkedIcon={<Iconify icon={'eva:checkmark-circle-2-outline'} />}
-              onChange={handleChangeComplete}
-              sx={{ position: 'absolute', bottom: 15 }}
-            />
           </Paper>
-
-          <KanbanTaskDetails
-            card={card}
-            isOpen={openDetails}
-            onClose={handleCloseDetails}
-            onDeleteTask={() => onDeleteTask(card.id)}
-          />
         </div>
       )}
     </Draggable>
