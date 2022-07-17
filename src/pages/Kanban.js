@@ -5,7 +5,6 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import { useDispatch, useSelector } from '../redux/store';
 import { getBoard, persistColumn, persistCard } from '../redux/slices/kanban';
 import Page from '../components/Page';
-import { SkeletonKanbanColumn } from '../components/skeleton';
 // sections
 import { KanbanColumn, KanbanColumnAdd } from '../sections';
 
@@ -92,9 +91,7 @@ export default function Kanban() {
                 alignItems="flex-start"
                 spacing={3}
               >
-                {!board.columnOrder.length ? (
-                  <SkeletonKanbanColumn />
-                ) : (
+                {board.columnOrder.length && (
                   board.columnOrder.map((columnId, index) => (
                     <KanbanColumn index={index} key={columnId} column={board.columns[columnId]} />
                   ))
