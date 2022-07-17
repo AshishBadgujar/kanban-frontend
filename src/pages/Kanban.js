@@ -91,11 +91,11 @@ export default function Kanban() {
                 alignItems="flex-start"
                 spacing={3}
               >
-                {board.columnOrder.length && (
+                {board.columnOrder.length ? (
                   board.columnOrder.map((columnId, index) => (
                     <KanbanColumn index={index} key={columnId} column={board.columns[columnId]} />
                   ))
-                )}
+                ) : ""}
                 {provided.placeholder}
                 <KanbanColumnAdd />
               </Stack>
