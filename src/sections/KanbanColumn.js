@@ -45,7 +45,6 @@ export default function KanbanColumn({ column, index }) {
     try {
       if (newName !== name) {
         dispatch(updateColumn(id, { ...column, name: newName }));
-        // enqueueSnackbar('Update success!');
       }
     } catch (error) {
       console.error(error);
